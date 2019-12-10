@@ -4,5 +4,6 @@
 http://localhost/phpmyadmin/
 新增一個叫 mytest 的資表庫 匯入address_book.sql這個資料表
 
-進入site01 執行npm i
+進入site01 執行npm i 後
+
 開啟 http://localhost:3000/
