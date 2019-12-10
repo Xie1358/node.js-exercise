@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="show"></div>
+      <img id="cc" alt="">
+      <img id="bb" alt="">
+
+      <form enctype="multipart/form-data" onsubmit="return false" name="form1">
+        <input type="file" class="file" name="file" multiple>
+        <button type="submit" class="btn btn-info">click</button>
+      </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+    <script>
+        $(".btn").click(function(){
+            const data = new FormData(document.form1)
+            console.log(data);
+            // const obj = {   //準備好資料
+            //   name: 'peter',
+            //   age: 20
+            // };
+            fetch('/try-upload', {
+                // body: JSON.stringify(obj),
+                // headers: {
+                //     'content-type': 'application/json'
+                // },
+                body:data,
+                method: 'POST'
+            })
+                .then(res=>{
+                    return res.json(); // 把字串轉成JS的物件
+                })
+                .then(obj=>{
+                    // $('#info').text(JSON.stringify(obj))
+                    $('#cc').attr("src",`/img/${obj[0]['originalname']}`)
+                    $('#bb').attr("src",`/img/${obj[1]['originalname']}`)
+                    $(".show").text(obj);
+                });
+        });
+    
+    </script>
+
+</body>
+</html>

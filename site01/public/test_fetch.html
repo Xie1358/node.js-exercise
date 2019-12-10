@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="info"></div>
+<button>click</button>
+
+
+<!-- https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch -->
+<script src="./lib/jquery-3.4.1.js"></script>
+<script>
+    $('button').click(function(){
+        console.log('click!');
+        const obj = {   //準備好資料
+          name: 'peter',
+          age: 20
+        };
+        fetch('/try-post-form2', {
+            body: JSON.stringify(obj),
+            headers: {
+                'content-type': 'application/json'
+            },
+            method: 'POST'
+        })
+            .then(response=>{
+                return response.json(); // 把字串轉成JS的物件
+            })
+            .then(obj=>{
+                $('#info').text(JSON.stringify(obj))
+            });
+    });
+
+</script>
+</body>
+</html>

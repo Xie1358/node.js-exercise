@@ -1,0 +1,25 @@
+<%- include('parts/html_head') %>
+<%- include('parts/navbar') %>
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">birthday</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(let r of rows){ %>
+        <tr>
+            <td><%= r.sid %></td>
+            <td><%= r.name %></td>
+            <td><%= r.birthday2 %></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+</div>
+<%- include('parts/html_foot') %>

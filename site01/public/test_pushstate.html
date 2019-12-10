@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/jquery-3.4.1.js"></script>
+</head>
+<body>
+
+<button id="p">push</button>
+<!-- 
+    要搭配server route對應前端某一隻程式執行
+ -->
+<script>
+    const p = $('#p');
+    let i = 1;
+    p.click(function(){
+        i++;
+        history.pushState({i:i}, 't'+i, '/page'+i); // page4 對應 i=4
+    });
+
+    window.onpopstate = function(event){
+        console.log(history.state); //當下state
+    };
+
+</script>
+
+</body>
+</html>
