@@ -1,4 +1,4 @@
-下載XAMPP
+安裝XAMPP
 開啟Apache 和 MySQL
 
 http://localhost/phpmyadmin/
